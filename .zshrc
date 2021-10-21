@@ -4,6 +4,8 @@
 # @author Jeff Geerling
 #
 
+export ZSH="$HOME/.oh-my-zsh"
+
 # Colors.
 unset LSCOLORS
 export CLICOLOR=1
@@ -16,7 +18,7 @@ unsetopt nomatch
 export PS1=$'\n'"%F{green} %*%F %3~ %F{white}"$'\n'"$ "
 
 # Enable plugins.
-plugins=(git brew history kubectl history-substring-search)
+plugins=(git osx docker golang iterm2 rust sudo vscode xcode yarn adb z cargo brew history kubectl history-substring-search)
 
 # Custom $PATH with extra locations.
 export PATH=$HOME/Library/Python/3.8/bin:/opt/homebrew/bin:/usr/local/bin:/usr/local/sbin:$HOME/bin:$HOME/go/bin:/usr/local/git/bin:$HOME/.composer/vendor/bin:$PATH
@@ -125,3 +127,18 @@ export COMPOSER_MEMORY_LIMIT=-1
 #}
 #shopt -s extdebug
 #trap prod_command_trap DEBUG
+
+source ~/.profile
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash ] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash ] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash
+
+export PATH="/usr/local/opt/openjdk/bin:$PATH"
+#export PATH="/usr/local/opt/go@1.13/bin:$PATH"
+
+alias node16='export PATH="/usr/local/bin:/usr/local/opt/node@16/bin:$PATH"; node -v'
+alias node14='export PATH="/usr/local/opt/node@14/bin:$PATH"; node -v'
