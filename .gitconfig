@@ -1,17 +1,63 @@
 [user]
-  name = Jeff Geerling
-  email = geerlingguy@mac.com
+	email = 484943+mclark4386@users.noreply.github.com
+	name = Matthew Clark
 [core]
-  editor = vi
-  excludesfile = ~/.gitignore
-  autocrlf = input
-[color]
-  branch = auto
-  diff = auto
-  interactive = auto
-  status = auto
+	excludesfile = ~/.gitignore_global
+	editor = emacs
+[alias]
+	pf = push --force-with-lease
+	pa = push origin --all
+	ptags = push --tags
+	ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+	st = status -sb
+	cl = clone
+	ci = commit
+	cm = commit -m
+	cam = commit -a -m
+	cem = commit --allow-empty -m
+	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+	lnc = log --pretty=format:"%h\\ %s\\ [%cn]"
+	lds = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+	ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+	le = log --oneline --decorate
+	ls = log --pretty=format:"%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]" --decorate --date=short
+	filelog = log -u
+	standup = log --since '1 day ago' --oneline --author "mclark4386@gmail.com"
+	fl = log -u
+	amend = commit --amend -C HEAD
+	ca = commit --amend
+	ai = add --interactive
+	co = checkout
+	br = branch
+	bra = branch -ra
+	d = diff --word-diff
+	dc = diff --cached
+	dr = "!f() { git diff "$1"^.."$1"; } ; f"
+	lc = "!f() { git ll "$1"^.."$1"; } ; f"
+	diffr = "!f() { git diff "$1"^.."$1"; } ; f"
+	gr = grep -Ii
+	cp = cherry-pick
+	undo = reset --soft HEAD^
+	graph = log --graph --pretty=format':%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset'
+	log1 = log --pretty=oneline --abbrev-commit
+
+[color "status"]
+	changed = cyan normal bold
+	untracked = blue normal bold
+[color "diff"]
+	old = red normal bold
+	new = green normal bold
+[branch]
+	autosetuprebase = always
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[url "git@mmgitl.mattclark.guru:"]
+	insteadOf = https://mmgitl.mattclark.guru/
 [init]
-  defaultBranch = master
+  defaultBranch = develop
 [web]
   browser = google-chrome
 [credential]
@@ -22,13 +68,5 @@
   tool = kdiff3
 [difftool]
   prompt = false
-[alias]
-  c = commit
-  ca = commit -a
-  cm = commit -m
-  cam = commit -am
-  d = diff
-  dc = diff --cached
-  l = log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit
 [pull]
 	rebase = true
